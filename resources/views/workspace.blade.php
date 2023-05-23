@@ -47,7 +47,7 @@
             </button>
             <div class="card mt-5">
             <div class="card-body">
-                <h4>CONTENT</h4>
+                <h5><i class="bi bi-plus-square"> </i> Add new Workspace</h5>
             </div>
         </div>
 

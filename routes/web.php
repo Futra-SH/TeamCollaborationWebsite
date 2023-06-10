@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorkspaceController;
+use App\Http\Controllers\LoginRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,8 @@ use App\Http\Controllers\WorkspaceController;
 */
 
 Route::get('/', function () {
-    return view('home', ['title' => 'Home']);
-})->name('home');
+    return view('landingpage', ['title' => 'landingpage']);
+})->name('landingpage');
 
 Route::get('register', [UserController::class, 'register'])->name('register');
 Route::post('register', [UserController::class, 'register_action'])->name('register.action');
@@ -27,3 +28,4 @@ Route::get('password', [UserController::class, 'password'])->name('password');
 Route::post('password', [UserController::class, 'password_action'])->name('password.action');
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 Route::get('workspace', [WorkspaceController::class, 'index'])->name('workspace');
+Route::get('loginregister', [LoginRegisterController::class, 'index'])->name('loginregister');

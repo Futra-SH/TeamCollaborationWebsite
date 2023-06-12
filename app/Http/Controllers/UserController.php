@@ -2,85 +2,187 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-
-class UserController extends Controller
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+class userController extends Controller
 {
-    public function register()
+    public function index()
     {
-        $data['title'] = 'Register';
-        return view('user/register', $data);
+        if ($user = Auth::user()) {
+            if ($user->role == 'admin') {
+
+            } elseif ($user->role == 'user') {
+                return redirect()->route('dashboard');
+            }
+        }
+        return view('Auth.login');
     }
 
-    public function register_action(Request $request)
+    public function Authentication(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'username' => 'required|unique:tb_user',
-            'password' => 'required',
-            'password_confirm' => 'required|same:password',
-        ]);
+        $data = $request->validate(
+            [
+                'email' => 'required | email ',
+                'password' => 'required'
+            ],
+            [
+                'email.required' => 'Email tidak boleh kosong',
+                'password.required' => 'Password tidak boleh kosong'
+            ]
+        );
 
-        $user = new User([
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-        ]);
-        $user->save();
+        $remember = $request->has("remember") ? true : false;
+        $credentials = $request->only('email', 'password');
 
-        return redirect()->route('login')->with('success', 'Registration success. Please login!');
-    }
-
-
-    public function login()
-    {
-        $data['title'] = 'Login';
-        return view('user/login', $data);
-    }
-
-    public function login_action(Request $request)
-    {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            $user = Auth::user();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Login Berhasil',
+                'data' => $user
+            ]);
+
+        } else {
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Username atau Password tidak terdaftar',
+                'data' => null
+            ]);
+        }
+    }
+
+    public function register(Request $request)
+    {
+
+
+        $data = $request->validate(
+            [
+                "name" => "required",
+                "email" => "required|email|unique:users,email",
+                "phone" => "required|numeric|unique:users,phone",
+                "address" => "required",
+                "password" => "required|min:8",
+                "password_confirm" => "required|same:password"
+            ],
+            [
+                "name.required" => "Nama tidak boleh kosong",
+                "email.required" => "Email tidak boleh kosong",
+                "email.email" => "Email tidak valid",
+                "email.unique" => "Email sudah terdaftar",
+                "phone.required" => "Nomor telepon tidak boleh kosong",
+                "phone.numeric" => "Nomor telepon tidak valid",
+                "phone.unique" => "Nomor telepon sudah terdaftar",
+                "address.required" => "Alamat tidak boleh kosong",
+                "password.required" => "Password tidak boleh kosong",
+                "password.min" => "Password minimal 8 karakter",
+                "password_confirm.required" => "Konfirmasi password tidak boleh kosong",
+                "password_confirm.same" => "Konfirmasi password tidak sama dengan password"
+            ]
+        );
+
+
+        $data["password"] = bcrypt($data["password"]);
+        $data["description"] = "";
+        $data["photo"] = "";
+
+        $user = User::create($data);
+        if ($user) {
+            return response()->json([
+                "status" => true,
+                "message" => "Registrasi berhasil",
+                "data" => $user
+            ]);
+        } else {
+            return response()->json([
+                "status" => false,
+                "message" => "Registrasi gagal",
+                "data" => null
+            ]);
         }
 
-        return back()->withErrors([
-            'password' => 'Wrong username or password',
-        ]);
     }
-
-    public function password()
-    {
-        $data['title'] = 'Change Password';
-        return view('user/password', $data);
-    }
-
-    public function password_action(Request $request)
-    {
-        $request->validate([
-            'old_password' => 'required|current_password',
-            'new_password' => 'required|confirmed',
-        ]);
-        $user = User::find(Auth::id());
-        $user->password = Hash::make($request->new_password);
-        $user->save();
-        $request->session()->regenerate();
-        return back()->with('success', 'Password changed!');
-    }
-
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect()->route('login');
     }
+
+
+    public function upload_picture(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $file = $request->file('photo');
+        $new_image_name = Auth::user()->name . '_avatar' .".jpg";
+        if(Storage::exists("public/profile_images/" . $new_image_name)){
+            Storage::delete("public/profile_images/" . $new_image_name);
+        }
+        // $upload = $file->storeAs('public/profile_images', $new_image_name);
+        $upload = $file->move(public_path("image_user/"), $new_image_name);
+        $user->update([
+            'photo' => $new_image_name
+        ]);
+        if ($upload) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Upload Berhasil',
+                'data' => $user
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Upload Gagal',
+                'data' => null
+            ]);
+        }
+    }
+
+    public function user_profile($id)
+    {
+        $user = User::find($id);
+        return view('pages.profile',compact('user'));
+
+    }
+
+    public function updateUser(Request $request){
+        $user = User::find(Auth::user()->id);
+        
+        $update = $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' =>$request->phone,
+            'address' => $request->address,
+            'description' => $request->deskripsi
+        ]);
+        return redirect()->route('profile',$user->id);
+    }
+
+    public function editpassword(Request $request){
+        $user = User::find(Auth::user()->id);
+        $validator = $request->validate(
+            [
+                "password_lama" => "required",
+                "password_baru" => "required|min:8",
+                "password_confirm" => "required|same:password_baru"
+            ],
+            [
+                "password_lama.required" => "Password lama tidak boleh kosong",
+                "password_baru.required" => "Password baru tidak boleh kosong",
+                "password_baru.min" => "Password baru minimal 8 karakter",
+                "password_confirm.required" => "Konfirmasi password tidak boleh kosong",
+                "password_confirm.same" => "Konfirmasi password tidak sama dengan password baru"
+            ]
+        );
+        $update = $user->update([
+            'password' => bcrypt($request->password_baru),
+            ]);
+        return redirect()->route('profile',$user->id);
+
+    }
+
+
 }

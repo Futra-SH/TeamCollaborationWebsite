@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Landing Page</title>
-    <link rel="stylesheet" href="{{ asset('/css/landingpage.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('/assets/css/landingpage.css')}}"/>
   </head>
   <body>
     <main>
@@ -13,7 +13,7 @@
         <header>
           <div class="container">
             <div class="logo">
-              <img src="{{ asset('img/logo.png') }}" alt="Logo" />
+              <img src="{{ asset('/assets/images/logo_cy.jpeg') }}" alt="Logo" />
               <h3>CollabYuk | Kolaborasi Tim</h3>
             </div>
 
@@ -22,7 +22,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Tentang</a></li>
                 <li><a href="#">Kontak</a></li>
-                <li><a href="{{ route('loginregister')}}" class="btn">Daftar</a></li>
+                <li><a href="{{ route('login')}}" class="btn">Daftar</a></li>
               </ul>
             </div>
 
@@ -46,12 +46,12 @@
               </p>
               <h4>Kontak Kami: 085246929540</h4>
               <div class="cta">
-                <a href="#" class="btn">Mulai</a>
+                <a href="{{ route('login')}}" class="btn">Mulai</a>
               </div>
             </div>
 
             <div class="right">
-              <img src="{{ asset('img/team.svg') }}" alt="Team Image" class="team" />
+              <img src="{{ asset('/assets/images/team.svg') }}" alt="Team Image" class="team" />
             </div>
           </div>
         </div>
@@ -70,6 +70,6 @@
     <!-- JavaScript Files -->
 
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <script src="{{ asset('/js/landingpage.js') }}"></script>
+    <script src="{{ asset('/assets/js/landingpage.js') }}"></script>
   </body>
 </html>

@@ -21,8 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/', function () {
+    return view('pages.landingpage');
+});
+
+Route::get('/login', function () {
     if($user = Auth::user()){
        return redirect()->route("dashboard");
     }else{

@@ -21,11 +21,10 @@
 
 </head>
 
-<body class="loading authentication-bg authentication-bg-pattern">
+<body style="background-size:cover; background-image: url('/assets/images/background.png') ">
 
     <div class="account-pages my-5">
         <div class="container">
-
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-4">
                     <div class="text-center">
@@ -69,7 +68,7 @@
                                 <hr>
                                 <p class="text-center text-muted">Belum Memiliki akun?</p>
                                 <div class="mb-3 d-grid text-center">
-                                    <a href="{{ route("register") }}" class="btn btn-outline-info"">Daftar</a>
+                                    <a href="{{ route("register") }}" class="btn btn-outline-info">Daftar</a>
                                 </div>
                             </form>
 

@@ -1,18 +1,6 @@
 <div class="navbar-custom" style="background-color: #83dcff">
     <ul class="list-unstyled topnav-menu float-end mb-0">
 
-        <li class="d-none d-lg-block">
-          
-        </li>
-
-        <li class="dropdown d-inline-block d-lg-none">
-           
-        </li>
-
-        <li class="dropdown notification-list topbar-dropdown">
-           
-        </li>
-
         <li class="dropdown notification-list topbar-dropdown">
             <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 @if(Auth::user()->photo != null)
@@ -55,18 +43,18 @@
     <div class="logo-box">
         <a href="index.html" class="logo logo-light text-center">
             <span class="logo-sm">
-                <img src="{{ asset("assets") }}/images/logo-sm.png" alt="" height="22">
+                <img src="{{ asset("assets") }}/images/logo_cy2.png" alt="" height="62">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset("assets") }}/images/logo-light.png" alt="" height="16">
+                <img src="{{ asset("assets") }}/images/logo_cy2.png" alt="" height="56">
             </span>
         </a>
         <a href="index.html" class="logo logo-dark text-center">
             <span class="logo-sm">
-                <img src="{{ asset("assets") }}/images/logo-sm.png" alt="" height="22">
+                <img src="{{ asset("assets") }}/images/logo_cy2.png" alt="" height="62">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset("assets") }}/images/logo-dark.png" alt="" height="16">
+                <img src="{{ asset("assets") }}/images/logo_cy2.png" alt="" height="56">
             </span>
         </a>
     </div>

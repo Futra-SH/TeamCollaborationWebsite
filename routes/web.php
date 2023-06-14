@@ -7,6 +7,8 @@ use App\Http\Controllers\ProjectTaskController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\CalenderController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +74,7 @@ Route::controller(projectController::class)->group(function(){
 
 Route::controller(PostinganController::class)->group(function(){
     Route::post("project/post/create","store")->name("post.create");
-    Route::get("preojct/post/delete/{id}","destroy")->name("post.delete");
+    Route::get("project/post/delete/{id}","destroy")->name("post.delete");
 })->middleware("auth");
 
 // upload dan hapus file yang dilampirkan
@@ -91,6 +93,8 @@ Route::controller(ProjectTaskController::class)->group(function(){
 
     Route::post("project_task/all","getByProjectId")->name("task.getAll");
 
-
 });
 
+
+Route::get('calendar-event', [CalenderController::class, 'index'])->name('calendar-event');
+Route::post('calendar-crud-ajax', [CalenderController::class, 'calendarEvents']);

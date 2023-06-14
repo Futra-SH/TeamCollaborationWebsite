@@ -31,12 +31,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="card bg-dark text-white">
-                    <img id="backgroud-project" src="{{ asset('assets/images/img_code.jpg') }}" width="100%"
+                    <img id="backgroud-project" src="{{ asset('assets/images/collab.jpg') }}" width="80%"
                         class="card-img" alt="project-header">
                     <div class="card-img-overlay">
                     </div>
                 </div>
-                <div class="row">
+                <div class="row"style="background-color: white">
                     <div class="col-md-8">
                         <div class="card bg-transparent">
                             <div class="card-body">
@@ -103,7 +103,7 @@
                                                         </div>
                                                     </h5>
                                                 </div>
-                                                <div class="card-body mt-0">
+                                                <div class="card-body mt-0" style="background-color: #d3e7ff">
                                                     @if ($postingan->id_user === Auth::user()->id)
                                                         <div class="dropdown float-end">
                                                             <a href="#" class="dropdown-toggle arrow-none card-drop"
@@ -153,7 +153,7 @@
                                             <div class="card-header p-3">
                                                 <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Daftar Tugas</h5>
                                             </div>
-                                            <div class="card-body" data-mdb-perfect-scrollbar="true">
+                                            <div class="card-body" data-mdb-perfect-scrollbar="true" style="background-color: #d3e7ff">
 
                                                 <table class="table mb-0">
                                                     <thead>
@@ -177,14 +177,14 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card">
+                        <div class="card" style="background-color: #fed9f2">
                             <div class="card-body">
                                 <h5 class="card-title">Kode Bergabung</h4>
                                     <h1 class="text-center">{{ $project->invite_code }}</h1>
 
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" style="background-color: #f2cefa">
                             <div class="card-body">
                                 <h5 class="card-title">Progress Projek</h4>
                                     <h5>Tugas selesai <span class="text-primary float-end" id="progress_value">45%</span>
@@ -201,7 +201,7 @@
                             </div>
                         </div>
 
-                        <div class="card">
+                        <div class="card" style="background-color: #d3e7ff">
                             <div class="card-body">
                                 <h4 class="header-title mt-0 mb-3">Tim Saya</h4>
                                 <ul class="list-group mb-0 user-list">
@@ -256,7 +256,7 @@
     </div>
     <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="chatModal" aria-hidden="true">
         <div class="modal-dialog " aria-hidden="true">
-            <div class="modal-content">
+            <div class="modal-content" style="background-color: #fed9f2">
                 <div class="modal-header">
                     <h4 class="modal-title">Obrolan Forum</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -290,7 +290,7 @@
     </div>
     <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModal" aria-hidden="true">
         <div class="modal-dialog " aria-hidden="true">
-            <div class="modal-content">
+            <div class="modal-content" style="background-color: #f2cefa">
                 <div class="modal-header">
                     <h4 class="modal-title">Daftar Tugas</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

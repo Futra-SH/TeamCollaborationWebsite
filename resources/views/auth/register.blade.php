@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="loading authentication-bg authentication-bg-pattern">
+<body style="background-size:cover; background-image: url('/assets/images/bground.png')">
 
     <div class="account-pages my-5">
         <div class="container">
@@ -75,7 +75,7 @@
                                         placeholder="konfirmasi password">
                                 </div>
                                 <div class="mb-3 d-grid text-center">
-                                    <button id="daftar" type="submit" class="btn btn-info"">Daftar</button>
+                                    <button id="daftar" type="submit" class="btn btn-info">Daftar</button>
                                 </div>
                             </form>
 

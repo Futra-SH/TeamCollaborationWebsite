@@ -120,9 +120,6 @@
 
         <!-- end row -->
 
-
-        -->
-
     </div> <!-- container-fluid -->
 @endsection
 

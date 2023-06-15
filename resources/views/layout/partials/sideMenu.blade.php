@@ -17,12 +17,6 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link arrow-none" href="#" id="topnav-dashboard"
-                            role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="mdi mdi-account-multiple me-1"></i> Rekan Tim
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
                         <a class="nav-link arrow-none" href="{{ route('calendar-event') }}" id="topnav-dashboard"
                             role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="mdi mdi-calendar-multiple-check me-1"></i> Jadwal

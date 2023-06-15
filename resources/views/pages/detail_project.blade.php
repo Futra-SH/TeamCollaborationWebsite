@@ -137,13 +137,11 @@
                                                     <button class="btn-primary btn-block btn"
                                                         onclick="showChatModal('{{ $postingan->id }}')"> <i
                                                             class="fe-message-square"></i>
-                                                        Obrolan <span class="badge bg-danger"
-                                                            id="badge_chat_{{ $postingan->id }}">3</span></button>
+                                                        Obrolan <span class="badge bg-danger"></button>
                                                     <button class="btn-info btn-block btn"
                                                         onclick="showTaskModal('{{ $postingan->id }}','{{ $project->id }}')">
                                                         <i class="fe-clipboard"></i>
-                                                        Tugas <span class="badge bg-danger"
-                                                            id="badge_task_{{ $postingan->id }}">3</span></button>
+                                                        Tugas</button>
                                                 </div>
                                             </div>
                                         @endforeach

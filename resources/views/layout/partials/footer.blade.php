@@ -6,8 +6,8 @@
             </div>
             <div class="col-md-6">
                 <div class="text-md-end footer-links d-none d-sm-block">
-                    <a href="#">Tentang Kami</a>
-                    <a href="#">Hubungi Kami</a>
+                    <a href="{{ route('landingpage')}}">Tentang Kami</a>
+                    <a href="{{ route('landingpage')}}">Hubungi Kami</a>
                 </div>
             </div>
         </div>

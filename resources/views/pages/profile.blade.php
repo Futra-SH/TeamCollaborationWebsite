@@ -30,7 +30,7 @@
         </div>
         <div class="row">
             <div class="col-sm-8">
-                <div class="card">
+                <div class="card" style="background-color: #fed9f2">
                     <div class="bg-picture card-body">
                         <div class="">
                             <div class="flex-grow-1 overflow-hidden">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 @if ($user->id == Auth::user()->id)
-                <div class="card">
+                <div class="card" style="background-color: #f7d7ff">
                     <div class="card-body">
                         <h4 class="header-title mt-0 mb-3"><i class="mdi mdi-notification-clear-all me-1"></i>
                             Ubah Profil</h4>
@@ -92,7 +92,7 @@
                 @endif
             </div>
             <div class="col-sm-4">
-                <div class="card">
+                <div class="card" style="background-color: #d3e7ff">
                     <div class="card-body">
                         <h4 class="header-title mt-0 mb-3"><i class="mdi mdi-notification-clear-all me-1"></i>
                             Foto Profil</h4>
@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 @if ($user->id == Auth::user()->id)
-                    <div class="card">
+                    <div class="card" style="background-color: #d3e7ff">
                         <div class="card-body">
                             <h4 class="header-title mt-0 mb-3"><i class="mdi mdi-notification-clear-all me-1"></i>
                                 Perbarui Password</h4>

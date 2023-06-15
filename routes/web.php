@@ -1,15 +1,18 @@
 <?php
 
-use App\Http\Controllers\ChatController;
-use App\Http\Controllers\PostinganController;
-use App\Http\Controllers\projectController;
-use App\Http\Controllers\ProjectTaskController;
-use App\Http\Controllers\userController;
-use App\Http\Controllers\FileController;
-use App\Http\Controllers\dashboardController;
-use App\Http\Controllers\FullCalenderController;
-use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\userController;
+use App\Http\Controllers\projectController;
+use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\PostinganController;
+use App\Http\Controllers\LandingpageController;
+use App\Http\Controllers\ProjectTaskController;
+use App\Http\Controllers\FullCalenderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -101,3 +104,5 @@ Route::controller(ProjectTaskController::class)->group(function(){
 
 Route::get('calendar-event', [CalenderController::class, 'index'])->name('calendar-event');
 Route::post('calendar-crud-ajax', [CalenderController::class, 'calendarEvents']);
+
+Route::get('/landingpage', [LandingpageController::class, 'index'])->name("landingpage");

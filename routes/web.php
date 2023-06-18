@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FileController;
-use App\Http\Controllers\userController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\projectController;
 use App\Http\Controllers\CalenderController;
 use App\Http\Controllers\dashboardController;
@@ -41,7 +41,7 @@ Route::controller(dashboardController::class)->group(function(){
 
 
 
-Route::controller(userController::class)->group(function(){
+Route::controller(UserController::class)->group(function(){
 
     Route::get('/login', 'index')->name("login");
     Route::get('/logout', 'logout')->name("logout");

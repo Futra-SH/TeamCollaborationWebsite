@@ -207,7 +207,7 @@
                                         <li class="list-group-item">
                                             <a href="{{ route("profile",$team->id) }}" class="user-list-item">
                                                 <div class="user avatar-sm float-start me-2">
-                                                    <img src="{{ asset('image_user/' . Auth::user()->photo) }}"
+                                                    <img src="{{ asset('image_user/' .$team->photo) }}"
                                                     class="rounded-circle avatar-sm" alt="friend" />
                                                 </div>
                                                 <div class="user-desc">
